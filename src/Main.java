@@ -3,5 +3,6 @@ public class Main {
         SalesManager salesManager = new SalesManager(new int[]{10,15,50,30});
         salesManager.max();
         System.out.println(salesManager);
+        System.out.println("Класс!");
     }
 }
