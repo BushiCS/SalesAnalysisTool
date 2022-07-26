@@ -1,15 +1,15 @@
 import java.util.Arrays;
 
 public class SalesManager {
-    protected int[] sales;
+    protected long[] sales;
 
-    public SalesManager(int[] sales) {
+    public SalesManager(long[] sales) {
         this.sales = sales;
     }
 
-    public int max() {
-        int max = -1;
-        for (int sale : sales) {
+    public long max() {
+        long max = -1;
+        for (long sale : sales) {
             if (sale > max) {
                 max = sale;
             }
@@ -17,12 +17,12 @@ public class SalesManager {
         return max;
     }
 
-    public int avg() {
-        int avg;
-        int sum = 0;
+    public long avg() {
+        long avg;
+        long sum = 0;
         Arrays.sort(sales); // Отсортировка по возрастанию
-        int[] trimmedSales = Arrays.copyOfRange(sales, 1, sales.length - 1); // Убираем крайние показатели
-        for (int sale : trimmedSales) {
+        long[] trimmedSales = Arrays.copyOfRange(sales, 1, sales.length - 1); // Убираем крайние показатели
+        for (long sale : trimmedSales) {
             sum += sale;
         }
         avg = sum / trimmedSales.length; // расчет среднего арифметического
