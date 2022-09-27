@@ -1,5 +1,7 @@
 import java.util.Arrays;
 
+import static java.lang.Long.MAX_VALUE;
+
 public class SalesManager {
     protected long[] sales;
 
@@ -8,25 +10,19 @@ public class SalesManager {
     }
 
     public long max() {
-        long max = -1;
-        for (long sale : sales) {
-            if (sale > max) {
-                max = sale;
-            }
-        }
-        return max;
+        return Arrays.stream(sales).filter(sale -> sale >= -1).max().orElse(-1);
+    }
+
+    public long min() {
+        return Arrays.stream(sales).min().orElse(MAX_VALUE);
     }
 
     public long avg() {
-        long avg;
-        long sum = 0;
+        long sum;
         Arrays.sort(sales); // Отсортировка по возрастанию
         long[] trimmedSales = Arrays.copyOfRange(sales, 1, sales.length - 1); // Убираем крайние показатели
-        for (long sale : trimmedSales) {
-            sum += sale;
-        }
-        avg = sum / trimmedSales.length; // расчет среднего арифметического
-        return avg;
+        sum = Arrays.stream(trimmedSales).sum();
+        return sum / trimmedSales.length; // расчет среднего арифметического
     }
 
     public String toString() {
